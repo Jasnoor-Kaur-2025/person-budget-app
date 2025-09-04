@@ -18,10 +18,11 @@
 <section class="top-section">
     <div class="graphs">
         <div class="graph graph-bar">
-            <p>Weekly Trend (Bar Chart Placeholder)</p>
+            <canvas id="weeklyChart"></canvas>
+
         </div>
         <div class="graph graph-pie">
-            <p>Category Breakdown (Pie Chart Placeholder)</p>
+            <canvas id="categoryChart"></canvas>
         </div>
     </div>
     <div class="info-cards">
@@ -89,6 +90,92 @@
         </tbody>
     </table>
 </section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+<script>
+/* ===== Helper: Generate Random Color ===== */
+function getRandomColor() {
+    const r = Math.floor(Math.random() * 200 + 30); // avoid too dark
+    const g = Math.floor(Math.random() * 200 + 30);
+    const b = Math.floor(Math.random() * 200 + 30);
+    return `rgba(${r}, ${g}, ${b}, 0.7)`;
+}
+
+/* ===== Weekly Bar Chart with Auto Colors ===== */
+const weeklyCtx = document.getElementById("weeklyChart").getContext("2d");
+const labels = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+const backgroundColor = labels.map(() => getRandomColor());
+const weeklyData = {
+    labels: labels,
+    datasets: [
+        {
+            label: "Income",
+            data: [200, 150, 10, 300, 100, 500, 200],
+            backgroundColor: backgroundColor
+        },
+        {
+            label: "Expenses",
+            data: [50, 80, 60, 30, 70, 90, 40],
+            backgroundColor: backgroundColor
+        }
+    ]
+};
+
+new Chart(weeklyCtx, {
+    type: "bar",
+    data: weeklyData,
+    options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    title: { display: true, text: "Expenses by Category" },
+    legend: {
+        position: "right",   // "top", "bottom", "left", or "right"
+        labels: {
+            boxWidth: 20,    // make the color box smaller
+            fontSize: 14
+        }
+    }
+}
+
+});
+
+/* ===== Category Pie Chart with Auto Colors ===== */
+const categoryCtx = document.getElementById("categoryChart").getContext("2d");
+
+const categories = ["Groceries","Transport","Entertainment","Bills","Other"];
+const expensesData = [150, 80, 100, 120, 50];
+
+// Generate random colors for each category
+const categoryColors = expensesData.map(() => getRandomColor());
+
+new Chart(categoryCtx, {
+    type: "pie",
+    data: {
+        labels: categories,
+        datasets: [{
+            label: "Expenses by Category",
+            data: expensesData,
+            backgroundColor: categoryColors
+        }]
+    },
+    options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    title: { display: true, text: "Expenses by Category" },
+    legend: {
+        position: "right",   // "top", "bottom", "left", or "right"
+        labels: {
+            boxWidth: 20,    // make the color box smaller
+            fontSize: 14
+        }
+    }
+}
+
+});
+</script>
+
+
 
 </body>
 </html>

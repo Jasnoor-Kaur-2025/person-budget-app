@@ -36,26 +36,34 @@ header p {
     gap: 20px;
 }
 
-
 .graphs {
-    flex: 2;
+    flex: 3;
     display: flex;
+    flex-wrap: wrap;          /* allow graphs to stack on small screens */
     gap: 20px;
+    justify-content: space-between;
+    align-items: stretch;     /* make cards align in height */
 }
+
 .graph {
+    flex: 1 1 45%;            /* responsive sizing: take ~45% width each */
     background-color: #fff;
-    border-radius: 12px;
-    height: 200px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    border-radius: 16px;      /* slightly larger rounding */
+    min-height: 400px;        /* increased height for larger graphs */
+    padding: 15px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1); /* softer, bigger shadow */
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
+}
+
+.graph p {
+    padding: 12px;
+    margin: 0;
     color: #555;
+    font-weight: 500;
 }
-.graph p{
-    padding: 10px;
-}
+
 .info-cards {
     flex: 1;
     display: flex;
@@ -245,4 +253,9 @@ tr:nth-child(even) {
     .history-bottom th, .history-bottom td {
         font-size: 0.9rem;
     }
+}
+
+canvas {
+  width: 100% !important;
+  height: auto !important;
 }
