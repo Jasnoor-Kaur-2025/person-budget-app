@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1757290710312,
+    "title": "Part Time",
+    "category": "Salary",
+    "amount": "180",
+    "type": "Income",
+    "date": "2025-09-08"
+  },
+  {
+    "id": 1757291068512,
+    "title": "WoolWorth milk",
+    "category": "Groceries",
+    "amount": "10",
+    "type": "Expense",
+    "date": "2025-09-08"
+  },
+  {
+    "id": 1757291328581,
+    "title": "Movie Ticket",
+    "category": "Entertainment",
+    "amount": "19",
+    "type": "Expense",
+    "date": "2025-09-08"
+  }
+]

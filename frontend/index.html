@@ -1,181 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Personal Budget App</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Budget App</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- Header -->
-<header>
-    <h1>Personal Budget App</h1>
-    <p>Track your income, expenses, and savings easily</p>
-</header>
+    <!-- Header -->
+    <header>
+        <h1>Personal Budget App</h1>
+        <p>Track your income, expenses, and savings easily</p>
+    </header>
 
-<!-- Top Section: Graphs + Info Cards -->
-<section class="top-section">
-    <div class="graphs">
-        <div class="graph graph-bar">
-            <canvas id="weeklyChart"></canvas>
+    <!-- Top Section: Graphs + Info Cards -->
+    <section class="top-section">
+        <div class="graphs">
+            <div class="graph graph-bar">
+                <canvas id="weeklyChart"></canvas>
 
-        </div>
-        <div class="graph graph-pie">
-            <canvas id="categoryChart"></canvas>
-        </div>
-    </div>
-    <div class="info-cards">
-        <div class="card savings-card">
-            <h3>Savings</h3>
-            <p>$450</p>
-        </div>
-        <div class="small-cards">
-            <div class="card income-card">
-                <h3>Income</h3>
-                <p>$1,200</p>
             </div>
-            <div class="card expenses-card">
-                <h3>Expenses</h3>
-                <p>$750</p>
+            <div class="graph graph-pie">
+                <canvas id="categoryChart"></canvas>
             </div>
         </div>
+        <div class="info-cards">
+            <div class="card savings-card" id="savings-card">
+                <h3>Savings</h3>
+                <p>$450</p>
+            </div>
+            <div class="small-cards">
+                <div class="card income-card" id="income-card">
+                    <h3>Income</h3>
+                    <p>$1,200</p>
+                </div>
+                <div class="card expenses-card" id="expenses-card">
+                    <h3>Expenses</h3>
+                    <p>$750</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Middle Section: Quick Add Buttons -->
+    <section class="middle-section">
+        <button class="add-btn">Add Income/Expense</button>
+        <button class="add-btn"><a href="history.html">View History</a></button>
+    </section>
+
+    <!-- Bottom Section: Transaction History -->
+    <section class="bottom-section">
+        <h2>Transaction History</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Category/Source</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Popup Modal -->
+    <div id="popupForm" class="popup">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <h2>Add Transaction</h2>
+            <form id="transactionForm">
+                <label for="title">Title</label>
+                <input type="text" id="title" required>
+
+                <label for="category">Category/Source</label>
+                <select id="category" required>
+                    <option value="Salary">Salary</option>
+                    <option value="Freelance">Freelance</option>
+                    <option value="Groceries">Groceries</option>
+                    <option value="Transport">Transport</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Bills">Bills</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="date">Date</label>
+                <input type="date" id="date" required>
+
+                <label for="amount">Amount</label>
+                <input type="number" id="amount" required>
+
+                <label for="type">Type</label>
+                <select id="type" required>
+                    <option value="Income">Income</option>
+                    <option value="Expense">Expense</option>
+                </select>
+
+                <button type="submit">Add</button>
+            </form>
+        </div>
     </div>
-</section>
 
-<!-- Middle Section: Quick Add Buttons -->
-<section class="middle-section">
-    <button class="add-btn">Add Income</button>
-    <button class="add-btn">Add Expense</button>
-    <button class="add-btn"><a href="history.html">View History</a></button>
-</section>
 
-<!-- Bottom Section: Transaction History -->
-<section class="bottom-section">
-    <h2>Transaction History</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Type</th>
-                <th>Category/Source</th>
-                <th>Amount</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>2025-09-01</td>
-                <td>Income</td>
-                <td>Part-time Job</td>
-                <td>$600</td>
-            </tr>
-            <tr>
-                <td>2025-09-03</td>
-                <td>Expense</td>
-                <td>Groceries</td>
-                <td>$50</td>
-            </tr>
-            <tr>
-                <td>2025-09-05</td>
-                <td>Expense</td>
-                <td>Transport</td>
-                <td>$120</td>
-            </tr>
-            <tr>
-                <td>2025-09-10</td>
-                <td>Income</td>
-                <td>Freelance</td>
-                <td>$200</td>
-            </tr>
-        </tbody>
-    </table>
-</section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-
-<script>
-/* ===== Helper: Generate Random Color ===== */
-function getRandomColor() {
-    const r = Math.floor(Math.random() * 200 + 30); // avoid too dark
-    const g = Math.floor(Math.random() * 200 + 30);
-    const b = Math.floor(Math.random() * 200 + 30);
-    return `rgba(${r}, ${g}, ${b}, 0.7)`;
-}
-
-/* ===== Weekly Bar Chart with Auto Colors ===== */
-const weeklyCtx = document.getElementById("weeklyChart").getContext("2d");
-const labels = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
-const backgroundColor = labels.map(() => getRandomColor());
-const weeklyData = {
-    labels: labels,
-    datasets: [
-        {
-            label: "Income",
-            data: [200, 150, 10, 300, 100, 500, 200],
-            backgroundColor: backgroundColor
-        },
-        {
-            label: "Expenses",
-            data: [50, 80, 60, 30, 70, 90, 40],
-            backgroundColor: backgroundColor
+    <script src="script.js"></script>
+    <script>
+        /* ===== Helper: Generate Random Color ===== */
+        function getRandomColor() {
+            const r = Math.floor(Math.random() * 200 + 80); // avoid too dark
+            const g = Math.floor(Math.random() * 200 + 80);
+            const b = Math.floor(Math.random() * 200 + 80);
+            return `rgba(${r}, ${g}, ${b}, 1)`;
         }
-    ]
-};
 
-new Chart(weeklyCtx, {
-    type: "bar",
-    data: weeklyData,
-    options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    title: { display: true, text: "Expenses by Category" },
-    legend: {
-        position: "right",   // "top", "bottom", "left", or "right"
-        labels: {
-            boxWidth: 20,    // make the color box smaller
-            fontSize: 14
+
+        /* ===== Category Pie Chart with Auto Colors ===== */
+        const categoryCtx = document.getElementById("categoryChart").getContext("2d");
+
+        const categories = ["Groceries", "Transport", "Entertainment", "Bills", "Other"];
+        const expensesData = [0, 0, 0, 0, 0];
+
+        async function graphExpensesData() {
+            const response = await fetch("/get-budgets");
+            const budgets = await response.json();
+
+            budgets.forEach(budget => {
+                if (budget.type === "Expense") {
+                    console.log(budget.title);
+                    const categoryIndex = categories.indexOf(budget.category);
+                    console.log(categoryIndex);
+                    if (categoryIndex !== -1) {
+                        expensesData[categoryIndex] = (expensesData[categoryIndex] || 0) + parseFloat(budget.amount);
+                    }
+                }
+            });
+
+            // Generate random colors for each category
+            const categoryColors = expensesData.map(() => getRandomColor());
+
+            new Chart(categoryCtx, {
+                type: "pie",
+                data: {
+                    labels: categories,
+                    datasets: [{
+                        label: "Expenses by Category",
+                        data: expensesData,
+                        backgroundColor: categoryColors
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    title: { display: true, text: "Expenses by Category" },
+                    legend: {
+                        position: "right",   // "top", "bottom", "left", or "right"
+                        labels: {
+                            boxWidth: 20,    // make the color box smaller
+                            fontSize: 14
+                        }
+                    }
+                }
+
+            });
         }
-    }
-}
 
-});
+        graphExpensesData();
 
-/* ===== Category Pie Chart with Auto Colors ===== */
-const categoryCtx = document.getElementById("categoryChart").getContext("2d");
-
-const categories = ["Groceries","Transport","Entertainment","Bills","Other"];
-const expensesData = [150, 80, 100, 120, 50];
-
-// Generate random colors for each category
-const categoryColors = expensesData.map(() => getRandomColor());
-
-new Chart(categoryCtx, {
-    type: "pie",
-    data: {
-        labels: categories,
-        datasets: [{
-            label: "Expenses by Category",
-            data: expensesData,
-            backgroundColor: categoryColors
-        }]
-    },
-    options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    title: { display: true, text: "Expenses by Category" },
-    legend: {
-        position: "right",   // "top", "bottom", "left", or "right"
-        labels: {
-            boxWidth: 20,    // make the color box smaller
-            fontSize: 14
-        }
-    }
-}
-
-});
-</script>
+    </script>
 
 
 
 </body>
+
 </html>
