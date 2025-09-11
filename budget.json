@@ -22,5 +22,29 @@
     "amount": "19",
     "type": "Expense",
     "date": "2025-09-08"
+  },
+  {
+    "id": 1757303136692,
+    "title": "Part Time",
+    "category": "Salary",
+    "amount": "200",
+    "type": "Income",
+    "date": "2025-09-09"
+  },
+  {
+    "id": 1757303173954,
+    "title": "MyKi card recharge",
+    "category": "Transport",
+    "amount": "15",
+    "type": "Expense",
+    "date": "2025-09-09"
+  },
+  {
+    "id": 1757383032310,
+    "title": "Gift",
+    "category": "Salary",
+    "amount": "70",
+    "type": "Income",
+    "date": "2025-09-10"
   }
 ]

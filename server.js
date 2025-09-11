@@ -77,7 +77,47 @@ app.get("/get-budgets", (req, res) => {
     }
 });
 
+app.get("/get-goal", (req, res) => {
+    try{
+        const goalFile = path.join(__dirname, 'goal.json');
+        if (!fs.existsSync(goalFile)) {
+            fs.writeFileSync(goalFile, JSON.stringify([]));
+        }
 
+        let goalData = [];
+        try{
+            goalData = JSON.parse(fs.readFileSync(goalFile));
+        } catch (err) {
+            console.error("Invalid JSON, resetting file:", err);
+            goalData = [];
+            fs.writeFileSync(goalFile, JSON.stringify([]));
+        }
+
+        res.status(200).json(goalData);
+    } catch (error) {
+        console.error("Error reading goal.json:", error);
+        res.status(500).json({message: "Internal server error", error: error.message});
+    }
+})
+
+app.post("/set-goal", (req, res) => {
+    const {goal, lastDate} = req.body;
+    if (!lastDate || !goal) {
+        return res.status(400).json({message: "Goal amount and last date are required"});
+    }
+    try{
+        const goalFile = path.join(__dirname, 'goal.json');
+        if (!fs.existsSync(goalFile)) {
+            fs.writeFileSync(goalFile, JSON.stringify([]));
+        }
+        const goalData = {lastDate: lastDate, goal: goal};
+        fs.writeFileSync(goalFile, JSON.stringify([goalData], null, 2));
+        res.status(200).json({message: "Goal set successfully"});
+    } catch (error) {
+        console.error("Error writing to goal.json:", error);
+        res.status(500).json({message: "Internal server error"});
+    }
+});
 app.listen(3000, () => {
     console.log("Server is running on http://localhost:3000");
 });

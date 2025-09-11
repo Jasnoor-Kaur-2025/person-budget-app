@@ -4,10 +4,12 @@ const closeBtn = document.querySelector(".close-btn");
 const form = document.getElementById("transactionForm");
 const tableBody = document.querySelector("tbody");
 
-window.addEventListener("DOMContentLoaded" , () => {
+window.addEventListener("DOMContentLoaded", () => {
     fetchBudgets();
     weeklyDate();
     graphExpensesData();
+    getGoal();
+    checkGoalAchieved();
 });
 // Open popup
 addBtn.addEventListener("click", () => {
@@ -175,3 +177,65 @@ const weeklyDate = async () => {
     });
 
 }
+
+const getGoal = async () => {
+    await fetch("/get-goal")
+        .then(res => res.json())
+        .then(data => {
+            if (Array.isArray(data) && data.length > 0 && data[0].goal !== 0) {
+                const goalAmount = data[0].goal;
+                document.querySelector(".goal").textContent = `Goal: $${goalAmount}`;
+            } else {
+                document.querySelector(".goal").textContent = "No goal set";
+            }
+        });
+};
+
+document.getElementById("set-goal-btn").addEventListener("click", () => {
+    document.getElementById("goalPopUp").style.display = "flex";
+
+    document.getElementById("closeGoalPopUp").addEventListener("click", () => {
+        document.getElementById("goalPopUp").style.display = "none";
+    });
+
+    const form = document.getElementById("goalForm");
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const goalAmount = document.getElementById("goalAmount").value;
+        const goalDate = document.getElementById("goalDate").value;
+
+        await fetch("/set-goal", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ goal: goalAmount, lastDate: goalDate })
+        });
+
+        document.getElementById("goalPopUp").style.display = "none";
+        getGoal();
+        form.reset();
+    });
+});
+
+const checkGoalAchieved = async () => {
+    await fetch("/get-goal")
+        .then(res => res.json())
+        .then(data => {
+            if (Array.isArray(data) && data.length > 0 && data[0].goal !== 0) {
+                const lastDate = new Date(data[0].lastDate);
+                const today = new Date();
+                if (today > lastDate) {
+                    const goalAmount = data[0].goal;
+                    const currentSavingsText = document.getElementById("savings-card").querySelector("p").textContent;
+                    const currentSavings = parseFloat(currentSavingsText.replace('$', ''));
+                    if (currentSavings >= goalAmount) {
+                        document.querySelector(".goal").textContent = "Goal Achieved!";
+                    } else {
+                        document.querySelector(".goal").textContent = "Goal Not Achieved. Set a new goal.";
+                    }
+                }
+            }
+
+        });
+    };

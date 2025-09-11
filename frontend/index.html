@@ -31,6 +31,7 @@
             <div class="card savings-card" id="savings-card">
                 <h3>Savings</h3>
                 <p>$450</p>
+                <p class="goal"></p>
             </div>
             <div class="small-cards">
                 <div class="card income-card" id="income-card">
@@ -49,6 +50,7 @@
     <section class="middle-section">
         <button class="add-btn">Add Income/Expense</button>
         <button class="add-btn"><a href="history.html">View History</a></button>
+        <button class="add-btn" id="set-goal-btn">Set Goal</button>
     </section>
 
     <!-- Bottom Section: Transaction History -->
@@ -105,10 +107,25 @@
         </div>
     </div>
 
+    <div class="popup" id="goalPopUp">
+        <div class="popup-content">
+            <span class="close-btn" id="closeGoalPopUp">&times;</span>
+            <h2>Set Savings Goal</h2>
+            <form id="goalForm">
+                <label for="goalAmount">Goal Amount</label>
+                <input type="number" id="goalAmount" required>
 
+                <label for="goalDate">Target Date</label>
+                <input type="date" id="goalDate" required>
+
+                <button type="submit">Set Goal</button>
+            </form>
+        </div>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
     <script src="script.js"></script>
+
     <script>
         /* ===== Helper: Generate Random Color ===== */
         function getRandomColor() {
