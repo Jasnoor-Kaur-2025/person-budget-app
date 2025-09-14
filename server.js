@@ -118,6 +118,26 @@ app.post("/set-goal", (req, res) => {
         res.status(500).json({message: "Internal server error"});
     }
 });
+
+app.delete("/delete-budget/:id", (req, res) => {
+    const budgetId = parseInt(req.params.id);
+    if (isNaN(budgetId)) {
+        return res.status(400).json({message: "Invalid budget ID"});
+    }
+    try {
+        const budgetFilePath = path.join(__dirname, 'budget.json');
+        if (!fs.existsSync(budgetFilePath)) {
+            return res.status(404).json({message: "No budget items found"});
+        }
+        const currentData = JSON.parse(fs.readFileSync(budgetFilePath));
+        const updatedData = currentData.filter(item => item.id !== budgetId);
+        fs.writeFileSync(budgetFilePath, JSON.stringify(updatedData, null, 2));
+        res.status(200).json({message: "Budget item deleted successfully"});
+    } catch (error) {
+        console.error("Error deleting budget item:", error);
+        res.status(500).json({message: "Internal server error"});
+    }
+})
 app.listen(3000, () => {
     console.log("Server is running on http://localhost:3000");
 });

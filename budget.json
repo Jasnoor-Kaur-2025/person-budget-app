@@ -1,21 +1,5 @@
 [
   {
-    "id": 1757290710312,
-    "title": "Part Time",
-    "category": "Salary",
-    "amount": "180",
-    "type": "Income",
-    "date": "2025-09-08"
-  },
-  {
-    "id": 1757291068512,
-    "title": "WoolWorth milk",
-    "category": "Groceries",
-    "amount": "10",
-    "type": "Expense",
-    "date": "2025-09-08"
-  },
-  {
     "id": 1757291328581,
     "title": "Movie Ticket",
     "category": "Entertainment",
@@ -24,27 +8,235 @@
     "date": "2025-09-08"
   },
   {
-    "id": 1757303136692,
-    "title": "Part Time",
-    "category": "Salary",
-    "amount": "200",
-    "type": "Income",
-    "date": "2025-09-09"
+    "id": 1757291328582,
+    "title": "Groceries - Woolworths",
+    "category": "Groceries",
+    "amount": "84",
+    "type": "Expense",
+    "date": "2025-09-02"
   },
   {
-    "id": 1757303173954,
-    "title": "MyKi card recharge",
+    "id": 1757291328583,
+    "title": "Uber Ride",
     "category": "Transport",
+    "amount": "28",
+    "type": "Expense",
+    "date": "2025-08-29"
+  },
+  {
+    "id": 1757291328584,
+    "title": "Freelance Website Project",
+    "category": "Freelance",
+    "amount": "620",
+    "type": "Income",
+    "date": "2025-08-25"
+  },
+  {
+    "id": 1757291328585,
+    "title": "Electricity Bill",
+    "category": "Bills",
+    "amount": "141",
+    "type": "Expense",
+    "date": "2025-08-20"
+  },
+  {
+    "id": 1757291328586,
+    "title": "Monthly Salary",
+    "category": "Salary",
+    "amount": "2500",
+    "type": "Income",
+    "date": "2025-08-01"
+  },
+  {
+    "id": 1757291328587,
+    "title": "Train Myki Top-Up",
+    "category": "Transport",
+    "amount": "60",
+    "type": "Expense",
+    "date": "2025-07-28"
+  },
+  {
+    "id": 1757291328588,
+    "title": "Groceries - Coles",
+    "category": "Groceries",
+    "amount": "72",
+    "type": "Expense",
+    "date": "2025-07-22"
+  },
+  {
+    "id": 1757291328589,
+    "title": "Streaming Subscription",
+    "category": "Entertainment",
     "amount": "15",
     "type": "Expense",
-    "date": "2025-09-09"
+    "date": "2025-07-10"
   },
   {
-    "id": 1757383032310,
-    "title": "Gift",
-    "category": "Salary",
-    "amount": "70",
+    "id": 1757291328590,
+    "title": "Phone Bill",
+    "category": "Bills",
+    "amount": "58",
+    "type": "Expense",
+    "date": "2025-07-05"
+  },
+  {
+    "id": 1757291328591,
+    "title": "Freelance Logo Design",
+    "category": "Freelance",
+    "amount": "200",
     "type": "Income",
-    "date": "2025-09-10"
+    "date": "2025-06-30"
+  },
+  {
+    "id": 1757291328592,
+    "title": "Cinema Snacks",
+    "category": "Entertainment",
+    "amount": "22",
+    "type": "Expense",
+    "date": "2025-06-25"
+  },
+  {
+    "id": 1757291328593,
+    "title": "Monthly Salary",
+    "category": "Salary",
+    "amount": "2500",
+    "type": "Income",
+    "date": "2025-06-01"
+  },
+  {
+    "id": 1757291328594,
+    "title": "Groceries - Aldi",
+    "category": "Groceries",
+    "amount": "95",
+    "type": "Expense",
+    "date": "2025-05-28"
+  },
+  {
+    "id": 1757291328595,
+    "title": "Water Bill",
+    "category": "Bills",
+    "amount": "73",
+    "type": "Expense",
+    "date": "2025-05-15"
+  },
+  {
+    "id": 1757291328596,
+    "title": "Freelance Editing Job",
+    "category": "Freelance",
+    "amount": "450",
+    "type": "Income",
+    "date": "2025-05-02"
+  },
+  {
+    "id": 1757291328597,
+    "title": "Bus Fare",
+    "category": "Transport",
+    "amount": "8",
+    "type": "Expense",
+    "date": "2025-04-22"
+  },
+  {
+    "id": 1757291328598,
+    "title": "Concert Ticket",
+    "category": "Entertainment",
+    "amount": "79",
+    "type": "Expense",
+    "date": "2025-04-17"
+  },
+  {
+    "id": 1757291328599,
+    "title": "Groceries - IGA",
+    "category": "Groceries",
+    "amount": "68",
+    "type": "Expense",
+    "date": "2025-04-10"
+  },
+  {
+    "id": 1757291328600,
+    "title": "Gas Bill",
+    "category": "Bills",
+    "amount": "102",
+    "type": "Expense",
+    "date": "2025-03-29"
+  },
+  {
+    "id": 1757291328601,
+    "title": "Freelance Bug Fix",
+    "category": "Freelance",
+    "amount": "150",
+    "type": "Income",
+    "date": "2025-03-14"
+  },
+  {
+    "id": 1757291328602,
+    "title": "Movie Night",
+    "category": "Entertainment",
+    "amount": "27",
+    "type": "Expense",
+    "date": "2025-03-03"
+  },
+  {
+    "id": 1757291328603,
+    "title": "Monthly Salary",
+    "category": "Salary",
+    "amount": "2500",
+    "type": "Income",
+    "date": "2025-03-01"
+  },
+  {
+    "id": 1757291328604,
+    "title": "Taxi",
+    "category": "Transport",
+    "amount": "36",
+    "type": "Expense",
+    "date": "2025-02-19"
+  },
+  {
+    "id": 1757291328605,
+    "title": "Electricity Bill",
+    "category": "Bills",
+    "amount": "137",
+    "type": "Expense",
+    "date": "2025-02-10"
+  },
+  {
+    "id": 1757291328606,
+    "title": "Groceries - Fresh Market",
+    "category": "Groceries",
+    "amount": "77",
+    "type": "Expense",
+    "date": "2025-01-31"
+  },
+  {
+    "id": 1757291328607,
+    "title": "Freelance Writing",
+    "category": "Freelance",
+    "amount": "300",
+    "type": "Income",
+    "date": "2025-01-15"
+  },
+  {
+    "id": 1757291328608,
+    "title": "Theme Park Entry",
+    "category": "Entertainment",
+    "amount": "65",
+    "type": "Expense",
+    "date": "2025-01-02"
+  },
+  {
+    "id": 1757291328609,
+    "title": "Internet Bill",
+    "category": "Bills",
+    "amount": "89",
+    "type": "Expense",
+    "date": "2024-12-20"
+  },
+  {
+    "id": 1757291328610,
+    "title": "Groceries - Countdown",
+    "category": "Groceries",
+    "amount": "63",
+    "type": "Expense",
+    "date": "2024-12-05"
   }
 ]

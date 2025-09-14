@@ -87,6 +87,24 @@ async function fetchBudgets() {
       <td>${budget.type}</td>
       <td>${budget.title}</td>
       <td style = "color: ${budget.type === 'Income' ? 'green' : 'red'};">$${budget.amount}</td>`;
+        // Adding delete button
+        const deleteCell = document.createElement("td");
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Delete";
+        deleteBtn.style.backgroundColor = "red";
+        deleteBtn.style.color = "white";
+        deleteBtn.style.border = "none";
+        deleteBtn.style.padding = "5px 10px";
+        deleteBtn.style.cursor = "pointer";
+        deleteBtn.addEventListener("click", async () => {
+            const confirmed = confirm("Are you sure you want to delete this budget item?");
+            if (confirmed) {
+                await fetch(`/delete-budget/${budget.id}`, { method: "DELETE" });
+                fetchBudgets(); // Refresh the budget list
+            }
+        });
+        deleteCell.appendChild(deleteBtn);
+        row.appendChild(deleteCell);
         tableBody.appendChild(row);
     });
 
